@@ -19,7 +19,7 @@ class MyModelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 {
     /**
      * myModelRepository
-     * 
+     *
      * @var \Jku\JkuFolderselector\Domain\Repository\MyModelRepository
      * @inject
      */
@@ -27,7 +27,7 @@ class MyModelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action list
-     * 
+     *
      * @return void
      */
     public function listAction()
@@ -38,12 +38,26 @@ class MyModelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action show
-     * 
+     *
      * @param \Jku\JkuFolderselector\Domain\Model\MyModel $myModel
      * @return void
      */
     public function showAction(\Jku\JkuFolderselector\Domain\Model\MyModel $myModel)
     {
+        $this->view->assign('files', $this->getFolderContent($myModel->getFolder()));
         $this->view->assign('myModel', $myModel);
+    }
+
+    private function getFolderContent($identifier)
+    {
+        if($identifier){
+            $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+            $folder = $resourceFactory->getFolderObjectFromCombinedIdentifier($identifier);
+            $storage = $resourceFactory->getStorageObjectFromCombinedIdentifier($identifier);
+            $files = $storage->getFilesInFolder($folder);
+            return $files;
+        }else{
+            return [];
+        }
     }
 }
