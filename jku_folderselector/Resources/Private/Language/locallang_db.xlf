@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-10-22T10:30:40Z" product-name="jku_folderselector">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-10-22T11:11:37Z" product-name="jku_folderselector">
 		<header/>
 		<body>
 			<trans-unit id="tx_jkufolderselector_domain_model_mymodel">

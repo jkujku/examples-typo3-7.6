@@ -10,8 +10,8 @@
             "name": "New Model Object",
             "value": {
                 "actionGroup": {
-                    "_default0_list": false,
-                    "_default1_show": false,
+                    "_default0_list": true,
+                    "_default1_show": true,
                     "_default2_new_create": false,
                     "_default3_edit_update": false,
                     "_default4_delete": false,
@@ -22,7 +22,7 @@
                     "addDeletedField": false,
                     "addHiddenField": false,
                     "addStarttimeEndtimeFields": false,
-                    "aggregateRoot": false,
+                    "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "",
@@ -62,7 +62,18 @@
         }
     ],
     "properties": {
-        "backendModules": [],
+        "backendModules": [
+            {
+                "actions": {
+                    "controllerActionCombinations": ""
+                },
+                "description": "Show Folder Selection Models",
+                "key": "folderselectormodule",
+                "mainModule": "tools",
+                "name": "Folder Selector Module",
+                "tabLabel": "Folder Selector"
+            }
+        ],
         "description": "Example extension with backend form to select a single folder. Folder is stored as string (FAL identifier). Typo3 7.6",
         "emConf": {
             "category": "doc",
@@ -86,7 +97,7 @@
     },
     "wires": [],
     "log": {
-        "last_modified": "2019-10-22 10:30",
+        "last_modified": "2019-10-22 11:11",
         "extension_builder_version": "7.6.18",
         "be_user": " (5)"
     }

@@ -3,11 +3,11 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-10-22T11:11:37Z" product-name="jku_folderselector">
 		<header/>
 		<body>
-			<trans-unit id="title.description">
-				<source>title</source>
+			<trans-unit id="mlang_tabs_tab">
+				<source>Folder Selector</source>
 			</trans-unit>
-			<trans-unit id="folder.description">
-				<source>folder</source>
+			<trans-unit id="mlang_labels_tabdescr">
+				<source>Show Folder Selection Models</source>
 			</trans-unit>
 		</body>
 	</file>

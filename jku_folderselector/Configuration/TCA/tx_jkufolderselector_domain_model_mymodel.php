@@ -31,14 +31,9 @@ return [
 	        'exclude' => false,
 	        'label' => 'LLL:EXT:jku_folderselector/Resources/Private/Language/locallang_db.xlf:tx_jkufolderselector_domain_model_mymodel.folder',
 	        'config' => [
-			    'type' => 'group',
-                'internal_type' => 'folder',
-                'multiple' => false,
-			    'size' => 1,
-			    'minitems' => 0,
-                'maxitems' => 1,
-                'hideMoveIcons' => true,
-
+			    'type' => 'input',
+			    'size' => 30,
+			    'eval' => 'trim'
 			],
 	    ],
     ],
