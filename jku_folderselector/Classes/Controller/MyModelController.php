@@ -44,7 +44,15 @@ class MyModelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function showAction(\Jku\JkuFolderselector\Domain\Model\MyModel $myModel)
     {
-        $this->view->assign('files', $this->getFolderContent($myModel->getFolder()));
+        $files = $this->getFolderContent($myModel->getFolder());
+        $this->view->assign('files', $files);
+        if(sizeof($files) > 0) {
+            $allRows = [];
+            foreach (array_keys($files) as $key){
+                $allRows = array_merge($allRows, $this->getFields($files[$key]));
+            }
+            $this->view->assign('content', $allRows);
+        }
         $this->view->assign('myModel', $myModel);
     }
 
@@ -60,4 +68,27 @@ class MyModelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             return [];
         }
     }
+
+    private function getFields(\TYPO3\CMS\Core\Resource\File $fileResource) {
+        $columnSeparator = ';';
+        $file = $fileResource->getForLocalProcessing(false);
+        $rows = array();
+        $handle = @fopen($file, 'r');
+        if (!$handle){
+            debug("File not found.");
+            return $rows;
+        }
+        while (($fields = fgetcsv($handle, 100000, $columnSeparator)) !== false) {
+            try {
+                $rows[] = $fields;
+            } catch (\TYPO3\CMS\Core\Exception $exception) {
+                debug("Error reading file.");
+                @fclose($handle);
+                return NULL;
+            }
+        }
+        @fclose($handle);
+        return $rows;
+    }
+
 }

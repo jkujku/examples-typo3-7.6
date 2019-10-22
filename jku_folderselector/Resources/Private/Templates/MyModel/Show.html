@@ -24,4 +24,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:for each="{files}" as="file">
 	<f:render partial="MyModel/File" arguments="{file:file}" />
 </f:for>
+
+<f:render partial="MyModel/Csvdata" arguments="{data:content}" />
+
 </f:section>
